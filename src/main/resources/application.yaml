@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: user-center
+  jpa:
+    hibernate:
+      ddl-auto: none
