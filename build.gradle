@@ -16,6 +16,10 @@ allprojects {
 		mavenCentral()
 	}
 
+	if (JavaVersion.current() < JavaVersion.VERSION_21) {
+		throw new GradleException("Java 21 or higher is required to build this project.")
+	}
+
 	dependencyManagement {
 		dependencies {
 			dependency 'com.github.f4b6a3:uuid-creator:6.1.1'
@@ -27,12 +31,6 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
-
-	java {
-		toolchain {
-			languageVersion = JavaLanguageVersion.of(23)
-		}
-	}
 
 	configurations {
 		compileOnly {
