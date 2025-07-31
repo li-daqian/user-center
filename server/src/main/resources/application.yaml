@@ -8,6 +8,10 @@ spring:
         globally_quoted_identifiers_skip_column_definitions: true
     hibernate:
       ddl-auto: none
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
 
-  flyway:
-    enabled: false
+logging:
+  level:
+    root: info

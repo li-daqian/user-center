@@ -1,4 +1,4 @@
 rootProject.name = 'user-center'
 
-include 'common'
+include 'client'
 include 'server'

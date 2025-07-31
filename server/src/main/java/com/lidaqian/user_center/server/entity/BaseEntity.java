@@ -48,6 +48,21 @@ public abstract class BaseEntity {
         if (this.id == null) {
             this.id = UuidCreator.getTimeOrderedEpoch();
         }
+
+        if (this.isDeleted == null) {
+            this.isDeleted = false;
+        }
+        if (this.deletedAt == null) {
+            this.deletedAt = 0L;
+        }
+
+        if (this.createdBy == null) {
+            this.createdBy = "";
+        }
+        if (this.updatedBy == null) {
+            this.updatedBy = "";
+        }
+
         Date now = new Date();
         if (this.createdTime == null) {
             this.createdTime = now;

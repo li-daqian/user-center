@@ -1,16 +1,17 @@
 package com.lidaqian.user_center.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lidaqian.user_center.dto.AppStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
@@ -40,24 +41,15 @@ public class App extends BaseEntity {
     @Column(name = "index_url", nullable = false)
     private String indexUrl;
 
-    @Enumerated(value = jakarta.persistence.EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private Status status;
+    private AppStatus status;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "app")
     private List<Role> role;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "app")
     private List<Permission> permission;
-
-    @Getter
-    @RequiredArgsConstructor
-    public enum Status {
-        ACTIVE("激活"),
-        INACTIVE("未激活"),
-        DISABLED("禁用"),
-        ;
-
-        private final String description;
-    }
 }

@@ -1,9 +1,9 @@
 package com.lidaqian.user_center.server.repository;
 
-import com.lidaqian.user_center.server.entity.App;
+import com.lidaqian.user_center.server.entity.Role;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 
-public interface AppRepository extends JpaRepositoryImplementation<App, UUID> {
+public interface RoleRepository extends JpaRepositoryImplementation<Role, UUID> {
 
 }
